@@ -68,7 +68,7 @@ export default () => {
       <div className="App">
         <div className="App-wrapper col-lg-6 mx-auto mt-5 m-3">
           <header className="App-header">
-            <img src="/images/icons/todolist.png" alt="icon" />
+            <img src="/images/todolist.svg" alt="icon" />
             <hr />
           </header>
           <form>
