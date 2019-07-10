@@ -1,0 +1,17 @@
+{
+  "name": "To-do-list",
+  "short_name": "To-do-list",
+  "theme_color": "#282c34",
+  "background_color": "#282c34",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "images/icons/todolist.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
+}

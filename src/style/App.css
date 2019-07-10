@@ -1,0 +1,93 @@
+
+hr {
+  border-bottom: 1px solid grey;
+}
+
+.close:focus {
+  outline:none;
+}
+
+.App {
+  text-align: center;
+  margin: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header { 
+  padding: 10px;
+  font-size: calc(10px + 2vmin);
+  color: goldenrod;
+}
+
+.App-body { 
+  padding: 10px;
+  font-size: calc(10px + 1vmin);
+  color: white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 10px auto 10px;
+  grid-gap: 10px;
+  padding-bottom: 10px; 
+}
+
+.App-wrapper {
+  border-radius: 10px;
+  margin: "auto";
+  max-width: "90%";
+  background: rgb(68, 67, 67);
+  -webkit-box-shadow: 0 15px 10px #14161a;
+  -moz-box-shadow: 0 15px 10px #14161a;
+  box-shadow: 0 15px 10px #14161a;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+input[type=text] {
+  border: none;
+  border-bottom: 2px solid #eed442;
+  color: white; 
+  font-size: 18px; 
+}
+
+input:focus {
+  outline:none;
+  color: white;
+}
+
+input {
+  width: 80%;
+  background-color: transparent;
+  height: 30px;
+}
+
+main {
+  text-align: left;
+  margin: 0 28px;
+  word-break: break-all;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.done {
+  text-decoration-line: line-through;
+  font-style: italic;
+}
