@@ -9,17 +9,7 @@ hr {
 
 .App {
   text-align: center;
-  margin: 15px 5px 15px 5px ;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
 }
 
 .App-header { 
@@ -34,6 +24,21 @@ hr {
   color: white;
 }
 
+.App-wrapper {
+  border-radius: 10px;
+  max-width: "90%";
+  background: rgb(68, 67, 67);
+  -webkit-box-shadow: 0 15px 10px #14161a;
+  -moz-box-shadow: 0 15px 10px #14161a;
+  box-shadow: 0 15px 10px #14161a;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 10px auto 10px;
@@ -41,15 +46,6 @@ hr {
   padding-bottom: 10px; 
 }
 
-.App-wrapper {
-  border-radius: 10px;
-  margin: "auto";
-  max-width: "90%";
-  background: rgb(68, 67, 67);
-  -webkit-box-shadow: 0 15px 10px #14161a;
-  -moz-box-shadow: 0 15px 10px #14161a;
-  box-shadow: 0 15px 10px #14161a;
-}
 
 .App-link {
   color: #61dafb;
