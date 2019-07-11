@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TodoContext } from "../Context";
+import { TodoContext } from "../utils/Context";
 import "../style/Button.css";
 
 export const CloseButton = ({ id }) => {

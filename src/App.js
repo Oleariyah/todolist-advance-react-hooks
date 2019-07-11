@@ -1,44 +1,8 @@
 import React, { useReducer, useRef, useEffect } from "react";
 import Todo from "./components/Todo";
-import { TodoContext } from "./Context";
+import { TodoContext } from "./utils/Context";
+import { appReducer } from "./utils/Reducers";
 import "./style/App.css";
-
-const appReducer = (state, action) => {
-  switch (action.type) {
-    case "fetchInitialData": {
-      return action.payload;
-    }
-    case "addToList": {
-      return [
-        {
-          id: Date.now(),
-          text: action.text,
-          completed: false
-        },
-        ...state
-      ];
-    }
-
-    case "completeTask": {
-      return state.map(item => {
-        if (item.id === action.id) {
-          return {
-            ...item,
-            completed: !item.completed
-          };
-        }
-        return item;
-      });
-    }
-
-    case "removeFromList": {
-      return state.filter(item => item.id !== action.id);
-    }
-
-    default:
-      return state;
-  }
-};
 
 export default () => {
   const [todos, dispatch] = useReducer(appReducer, []);
