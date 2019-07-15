@@ -2,6 +2,7 @@ import React, { useReducer, useRef, useEffect } from "react";
 import Todo from "./components/Todo";
 import { TodoContext } from "./utils/Context";
 import { appReducer } from "./utils/Reducers";
+import { useTransition, animated } from "react-spring";
 import "./style/App.css";
 
 export default () => {
@@ -27,6 +28,12 @@ export default () => {
     }
   };
 
+  const transition = useTransition(todos, todos => todos.id, {
+    from: { opacity: 0, marginTop: -25, marginBottom: 25 },
+    enter: { opacity: 1, marginTop: 0, marginBottom: 0 },
+    leave: { opacity: 0, marginTop: -25, marginBottom: 25 }
+  });
+
   return (
     <TodoContext.Provider value={dispatch}>
       <div className="App">
@@ -51,15 +58,15 @@ export default () => {
                 {"No available to-do-list"}
               </div>
             ) : (
-              todos.map(todo => (
-                <div key={todo.id}>
+              transition.map(({ item, key, props }) => (
+                <animated.div key={key} style={props}>
                   <Todo
-                    text={todo.text}
-                    id={todo.id}
-                    complete={todo.completed}
+                    text={item.text}
+                    id={item.id}
+                    complete={item.completed}
                   />
                   <hr />
-                </div>
+                </animated.div>
               ))
             )}
           </main>
