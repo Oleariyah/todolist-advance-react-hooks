@@ -37,7 +37,7 @@ export default () => {
   return (
     <TodoContext.Provider value={dispatch}>
       <div className="App">
-        <div className="App-wrapper col-lg-6 mx-auto mt-5 m-3">
+        <div className="App-wrapper col-10 col-lg-6 mx-auto mt-5 m-3">
           <header className="App-header">
             Todo App
             <hr />
