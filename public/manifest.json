@@ -1,6 +1,6 @@
 {
-  "name": "To-do-list",
-  "short_name": "To-do-list",
+  "name": "To-do App",
+  "short_name": "To-do App",
   "theme_color": "#282c34",
   "background_color": "#282c34",
   "display": "standalone",
