@@ -8,9 +8,9 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "images/icons/todolist.png",
+      "src": "images/icons/todolist.svg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg"
     }
   ],
   "splash_pages": null
