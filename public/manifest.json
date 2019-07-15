@@ -3,7 +3,7 @@
   "short_name": "To-do-list",
   "theme_color": "#282c34",
   "background_color": "#282c34",
-  "display": "browser",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [
