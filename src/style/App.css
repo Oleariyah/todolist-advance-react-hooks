@@ -43,7 +43,11 @@ hr {
   display: grid;
   grid-template-columns: 10px auto 10px;
   grid-gap: 10px;
-  padding-bottom: 10px; 
+  padding-bottom: 10px;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto; 
 }
 
 
