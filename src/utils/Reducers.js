@@ -8,6 +8,8 @@ export const appReducer = (state, action) => {
         {
           id: Date.now(),
           text: action.text,
+          deadline: action.deadline,
+          time: action.time,
           completed: false
         },
         ...state

@@ -1,5 +1,6 @@
-import React, { useReducer, useRef, useEffect } from "react";
+import React, { useState, useReducer, useRef, useEffect } from "react";
 import Todo from "./components/Todo";
+import Form from "./components/Form";
 import { TodoContext } from "./utils/Context";
 import { appReducer } from "./utils/Reducers";
 import { useTransition, animated } from "react-spring";
@@ -7,6 +8,11 @@ import "./style/App.css";
 
 export default () => {
   const [todos, dispatch] = useReducer(appReducer, []);
+  const [state, setstate] = useState({
+    time: "",
+    openModal: false
+  });
+
   const inputRef = useRef();
 
   useEffect(() => {
@@ -21,10 +27,34 @@ export default () => {
   }, [todos]);
 
   const handleKeyDown = event => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && inputRef.current.value !== null) {
       event.preventDefault();
-      dispatch({ type: "addToList", text: inputRef.current.value });
+      dispatch({
+        type: "addToList",
+        text: inputRef.current.value
+      });
       inputRef.current.value = "";
+    }
+  };
+
+  const handleTimeChange = newTime => {
+    setstate({ ...state, time: newTime.formatted });
+  };
+
+  const handleTimePicker = () => {
+    setstate({ ...state, openModal: !state.openModal });
+  };
+
+  const handleSubmit = event => {
+    if (inputRef.current.value !== "") {
+      event.preventDefault();
+      dispatch({
+        type: "addToList",
+        text: inputRef.current.value,
+        deadline: state.time
+      });
+      inputRef.current.value = "";
+      state.time = "";
     }
   };
 
@@ -37,38 +67,44 @@ export default () => {
   return (
     <TodoContext.Provider value={dispatch}>
       <div className="App">
-        <div className="App-wrapper col-10 col-lg-6 mx-auto mt-5 m-3">
-          <header className="App-header">
-            Todo App
+        <div className="App-wrapper col-10 col-lg-6">
+          <header className="bg">
+            <div className="App-header text-center">Todo App</div>
             <hr />
           </header>
-          <form>
-            <input
-              type="text"
-              name="addtodo"
-              ref={inputRef}
-              col="3"
-              placeholder="Add new todo"
-              onKeyDown={handleKeyDown}
-            />
-          </form>
-          <main className="App-body mb-3">
-            {todos.length === 0 ? (
-              <div className="text-center p-3 text-muted">
-                {"No available to-do-list"}
-              </div>
-            ) : (
-              transition.map(({ item, key, props }) => (
-                <animated.div key={key} style={props}>
-                  <Todo
-                    text={item.text}
-                    id={item.id}
-                    complete={item.completed}
-                  />
-                  <hr />
-                </animated.div>
-              ))
-            )}
+          <section className="form-area">
+            <div className="container">
+              <Form
+                handleKeyDown={handleKeyDown}
+                handleTimeChange={handleTimeChange}
+                handleTimePicker={handleTimePicker}
+                handleSubmit={handleSubmit}
+                time={state.time}
+                modal={state.openModal}
+                inputRef={inputRef}
+              />
+            </div>
+          </section>
+          <main className="App-body mt-3 mb-3">
+            <div className="container">
+              {todos.length === 0 ? (
+                <div className="text-center p-3 text-muted">
+                  {"No available to-do-list"}
+                </div>
+              ) : (
+                transition.map(({ item, key, props }) => (
+                  <animated.div key={key} style={props}>
+                    <Todo
+                      text={item.text}
+                      id={item.id}
+                      deadline={item.deadline}
+                      complete={item.completed}
+                    />
+                    <hr />
+                  </animated.div>
+                ))
+              )}
+            </div>
           </main>
         </div>
       </div>
