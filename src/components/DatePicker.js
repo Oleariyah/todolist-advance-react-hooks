@@ -11,8 +11,6 @@ export default props => {
           onDoneClick={() => props.handleTimePicker()}
         />
         ;
-        <br />
-        <span style={{ color: "white" }}>Time is {props.time}</span>
       </div>
     </div>
   );
