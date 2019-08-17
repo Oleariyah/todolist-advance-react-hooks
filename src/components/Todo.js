@@ -9,9 +9,8 @@ export default ({ text, id, complete, deadline }) => {
           <div>
             <Checkbox id={id} toggleCheck={complete} />
           </div>
-          <div className={complete ? "done" : ""}>
-            {text}
-            <br />
+          <div>
+            <div className={complete ? "done" : ""}>{text}</div>
             <div>
               {deadline ? (
                 <div className="deadline">{`deadline: ${deadline}`}</div>

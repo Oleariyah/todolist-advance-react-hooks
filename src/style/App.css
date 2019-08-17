@@ -58,12 +58,8 @@ hr {
   grid-template-columns: 10px auto 10px;
   grid-gap: 10px;
   padding-bottom: 5px;
-  word-wrap: break-word;
-  word-break: break-all;
-  overflow-wrap: break-word;
--webkit-hyphens: auto;
-   -moz-hyphens: auto;
-        hyphens: auto;
+  white-space:pre-wrap;
+  word-break:break-word;
 }
 
 .App-link {
