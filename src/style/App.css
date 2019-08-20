@@ -45,6 +45,16 @@ hr {
     width: "100%";
     background: #2e333b;
   }
+
+  .App {
+    display: flex;
+    justify-content: center;position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+  }
 }
 
 .App-logo {
