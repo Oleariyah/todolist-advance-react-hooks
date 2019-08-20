@@ -9,6 +9,7 @@ export default props => {
           time={props.time}
           onChange={props.handleTimeChange}
           onDoneClick={() => props.handleTimePicker()}
+          switchToMinuteOnHourSelect={true}
         />
         ;
       </div>

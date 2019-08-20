@@ -1,6 +1,7 @@
 import React, { useState, useReducer, useRef, useEffect } from "react";
 import Todo from "./components/Todo";
 import Form from "./components/Form";
+import Notification from "./components/Notification";
 import { TodoContext } from "./utils/Context";
 import { appReducer } from "./utils/Reducers";
 import { useTransition, animated } from "react-spring";
@@ -10,6 +11,7 @@ export default () => {
   const [todos, dispatch] = useReducer(appReducer, []);
   const [state, setstate] = useState({
     time: "",
+    seconds: 0,
     openModal: false
   });
 
@@ -38,7 +40,12 @@ export default () => {
   };
 
   const handleTimeChange = newTime => {
-    setstate({ ...state, time: newTime.formatted });
+    let seconds = 0;
+    let hoursInSeconds = newTime.hour * 3600;
+    let minutesInSeconds = newTime.minute * 60;
+    seconds = hoursInSeconds + minutesInSeconds;
+    console.log(seconds);
+    setstate({ ...state, time: newTime.formatted, seconds: seconds });
   };
 
   const handleTimePicker = () => {
@@ -51,6 +58,7 @@ export default () => {
       dispatch({
         type: "addToList",
         text: inputRef.current.value,
+        timeInSeconds: state.seconds,
         deadline: state.time
       });
       inputRef.current.value = "";
@@ -67,6 +75,7 @@ export default () => {
   return (
     <TodoContext.Provider value={dispatch}>
       <div className="App">
+        <Notification />
         <div className="App-wrapper col-10 col-lg-6">
           <header className="bg">
             <div className="App-header text-center">Todo App</div>
