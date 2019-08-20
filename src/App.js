@@ -84,7 +84,7 @@ export default () => {
             complete={item.completed}
           />
         ))}
-        <div className="App-wrapper col-10 col-lg-6">
+        <div className="App-wrapper col-lg-6 col-xs-12">
           <header className="bg">
             <div className="App-header text-center">Todo App</div>
             <hr />
