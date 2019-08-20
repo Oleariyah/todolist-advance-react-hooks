@@ -75,7 +75,15 @@ export default () => {
   return (
     <TodoContext.Provider value={dispatch}>
       <div className="App">
-        <Notification />
+        {transition.map(({ item }) => (
+          <Notification
+            text={item.text}
+            todos={transition}
+            id={item.id}
+            deadline={item.deadline}
+            complete={item.completed}
+          />
+        ))}
         <div className="App-wrapper col-10 col-lg-6">
           <header className="bg">
             <div className="App-header text-center">Todo App</div>
