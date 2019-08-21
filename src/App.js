@@ -11,7 +11,6 @@ export default () => {
   const [todos, dispatch] = useReducer(appReducer, []);
   const [state, setstate] = useState({
     time: "",
-    seconds: 0,
     openModal: false
   });
 
@@ -40,12 +39,7 @@ export default () => {
   };
 
   const handleTimeChange = newTime => {
-    let seconds = 0;
-    let hoursInSeconds = newTime.hour * 3600;
-    let minutesInSeconds = newTime.minute * 60;
-    seconds = hoursInSeconds + minutesInSeconds;
-    console.log(seconds);
-    setstate({ ...state, time: newTime.formatted, seconds: seconds });
+    setstate({ ...state, time: newTime.formatted });
   };
 
   const handleTimePicker = () => {
@@ -58,7 +52,6 @@ export default () => {
       dispatch({
         type: "addToList",
         text: inputRef.current.value,
-        timeInSeconds: state.seconds,
         deadline: state.time
       });
       inputRef.current.value = "";
@@ -76,13 +69,7 @@ export default () => {
     <TodoContext.Provider value={dispatch}>
       <div className="App">
         {transition.map(({ item }) => (
-          <Notification
-            text={item.text}
-            todos={transition}
-            id={item.id}
-            deadline={item.deadline}
-            complete={item.completed}
-          />
+          <Notification todos={transition} key={item.id} />
         ))}
         <div className="App-wrapper col-lg-6 col-xs-12">
           <header className="bg">

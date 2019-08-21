@@ -3,11 +3,12 @@ import WebNotification from "react-web-notifications";
 
 export default ({ todos }) => {
   const pendingTodos = todos.filter(todo => todo.item.completed !== true);
+
   return (
     <div>
       <WebNotification
         title="Pending Task" // the title prop is required
-        icon="path/to/image.jpg"
+        icon="/images/todolist.png"
         body={`You have ${pendingTodos.length} pending task${
           pendingTodos.length > 1 ? "s" : ""
         }.`}
