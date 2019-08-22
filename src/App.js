@@ -11,10 +11,12 @@ export default () => {
   const [todos, dispatch] = useReducer(appReducer, []);
   const [state, setstate] = useState({
     time: "",
+    notify: false,
     openModal: false
   });
 
   const inputRef = useRef();
+  const minutes = new Date().getMinutes();
 
   useEffect(() => {
     const raw = localStorage.getItem("todoData");
@@ -26,6 +28,13 @@ export default () => {
   useEffect(() => {
     localStorage.setItem("todoData", JSON.stringify(todos));
   }, [todos]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setstate({ ...state, notify: !state.notify });
+    }, 900000);
+    return () => clearInterval(interval);
+  }, [minutes]);
 
   const handleKeyDown = event => {
     if (event.key === "Enter" && inputRef.current.value !== null) {
@@ -68,9 +77,7 @@ export default () => {
   return (
     <TodoContext.Provider value={dispatch}>
       <div className="App">
-        {transition.map(({ item }) => (
-          <Notification todos={transition} key={item.id} />
-        ))}
+        {state.notify ? <Notification todos={transition} /> : null}
         <div className="App-wrapper col-lg-6 col-xs-12">
           <header className="bg">
             <div className="App-header text-center">Todo App</div>
