@@ -11,6 +11,7 @@ export default () => {
   const [todos, dispatch] = useReducer(appReducer, []);
   const [state, setstate] = useState({
     time: "",
+    timeInSeconds: 0,
     notify: false,
     openModal: false
   });
@@ -20,8 +21,13 @@ export default () => {
 
   useEffect(() => {
     const raw = localStorage.getItem("todoData");
+    const timeInSecondsNow = new Date().getTime() / 1000;
     if (raw !== "") {
       dispatch({ type: "fetchInitialData", payload: JSON.parse(raw) });
+    }
+
+    if (timeInSecondsNow >= state.timeInSeconds) {
+      dispatch({ type: "completeTask", completed: true });
     }
   }, []);
 
@@ -48,7 +54,12 @@ export default () => {
   };
 
   const handleTimeChange = newTime => {
-    setstate({ ...state, time: newTime.formatted });
+    let seconds = 0;
+    const hourInSeconds = newTime.hour * 3600;
+    const minuteInSeconds = newTime.minutes * 60;
+    seconds = hourInSeconds + minuteInSeconds;
+
+    setstate({ ...state, time: newTime.formatted, timeInSeconds: seconds });
   };
 
   const handleTimePicker = () => {

@@ -12,7 +12,7 @@ export default ({ todos }) => {
         body={`You have ${pendingTodos.length} pending task${
           pendingTodos.length > 1 ? "s" : ""
         }.`}
-        timeout={9000}
+        timeout={15000}
         //onClickFn={() => window.open("https://www.google.com/", "_blank")} // open your own site on notification click
       />
     </div>
