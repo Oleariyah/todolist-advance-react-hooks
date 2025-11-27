@@ -7,7 +7,7 @@
     "push.js": "^1.0.12",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5",
+    "react-scripts": "5.0.1",
     "react-spring": "^8.0.27",
     "react-timekeeper": "^1.1.0",
     "react-web-notification": "^0.6.1",
